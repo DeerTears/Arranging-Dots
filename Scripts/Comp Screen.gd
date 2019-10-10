@@ -36,17 +36,23 @@ func _unhandled_input(event):
 func SpaceCalcX():
 	ScreenX = OS.window_size.x
 	GapAmt = (ScreenX / PointNum)
-	
+	PlacePoints(PointNum, GapAmt)
 	$NumPanel/Label.text = ("# of Points: " + PointNum as String)
 	$GapPanel/Label.text = ("Gap Between Points: " + GapAmt as String)
+	
 
 func _process(delta: float):
 	time += delta
-	if time < 1:
+	if time > 1:
+		time = 0
 		print("1 second")
+		
 
-#for i in 10:
-	#var s = Sprite.new()
-	#	s.name = ("Point " + i as String)
-	#	#s.move_local_x(PtNum * i)
-	#	add_child(s)
+func PlacePoints(num: int, gap: float):
+	print("Num: " + num as String + " Gap: " + gap as String)
+	#for i in num:
+	#	print(i)
+		#PointInst = load("res://Scenes/Point.tscn")
+		#PointInst.move_local_x(num * i)
+		#PointInst.name = ("Point_" + i as String)
+		#	add_child(s)
